@@ -38,8 +38,11 @@ public class UseCase1PalindromeCheckerApp {
 
  */
 import java.util.LinkedList;
+
 public class PalindromeCheckerApp {
+
     public static void main(String[] args) {
+
         // Define the input string
         String input = "level";
 
@@ -71,4 +74,3 @@ public class PalindromeCheckerApp {
         System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
-

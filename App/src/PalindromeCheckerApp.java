@@ -40,20 +40,32 @@ public class UseCase1PalindromeCheckerApp {
 
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
-        String input = "madam";
-        String reversed = "";
+        // Declare and initialize the input string
+        String input = "radar";
 
-        // Iterate from last character to first
-        for (int i = input.length() - 1; i >= 0; i--) {
-            reversed = reversed + input.charAt(i);
+        // Convert the string into a character array
+        char[] chars = input.toCharArray();
+
+        // Initialize pointers
+        int start = 0;
+        int end = chars.length - 1;
+
+        // Assume palindrome initially
+        boolean isPalindrome = true;
+
+        // Compare characters using two-pointer technique
+        while (start < end) {
+            if (chars[start] != chars[end]) {
+                isPalindrome = false;
+                break;
+            }
+            start++;
+            end--;
         }
 
-        // Compare original and reversed string
-        if (input.equals(reversed)) {
-            System.out.println(input + " is a palindrome.");
-        } else {
-            System.out.println(input + " is not a palindrome.");
-        }
+        // Display result
+        System.out.println("Input : " + input);
+        System.out.println("Is Palindrome? : " + isPalindrome);
     }
 }
 

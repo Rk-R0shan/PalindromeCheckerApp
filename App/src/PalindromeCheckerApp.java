@@ -81,34 +81,29 @@ class DequeStrategy implements PalindromeStrategy {
     }
 }
 
-// Context Class
-class PalindromeChecker {
-    private PalindromeStrategy strategy;
-
-    public PalindromeChecker(PalindromeStrategy strategy) {
-        this.strategy = strategy;
-    }
-
-    public boolean check(String input) {
-        return strategy.isPalindrome(input);
-    }
-}
-
 // Main Class
 public class PalindromeCheckerApp {
     public static void main(String[] args) {
 
-        String input = "level"; // change input if needed
+        String input = "level";
 
+        // Choose any strategy
         PalindromeStrategy strategy = new StackStrategy();
-        // or: new DequeStrategy();
+        // PalindromeStrategy strategy = new DequeStrategy();
 
-        PalindromeChecker checker = new PalindromeChecker(strategy);
+        // Start time
+        long startTime = System.nanoTime();
 
-        boolean result = checker.check(input);
+        boolean result = strategy.isPalindrome(input);
 
-        // EXACT REQUIRED FORMAT
+        // End time
+        long endTime = System.nanoTime();
+
+        long executionTime = endTime - startTime;
+
+        // Required Output Format
         System.out.println("Input : " + input);
         System.out.println("Is Palindrome? : " + result);
+        System.out.println("Execution Time : " + executionTime + " ns");
     }
 }

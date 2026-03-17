@@ -91,6 +91,6 @@ public class PalindromeCheckerApp {
 
         // Required Output Format
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + result);
+        System.out.println("Is Palindrome? :  " + result);
     }
 }

@@ -38,29 +38,59 @@ public class UseCase1PalindromeCheckerApp {
 
  */
 
-public class PalindromeCheckerApp {
+class PalindromeChecker {
+    private char[] stack;
+    private int top;
 
-    public static void main(String[] args) {
+    // Constructor
+    public PalindromeChecker(int size) {
+        stack = new char[size];
+        top = -1;
+    }
 
-        // Input string
-        String input = "A man a plan a canal Panama";
+    // Push operation (Stack)
+    private void push(char ch) {
+        stack[++top] = ch;
+    }
 
-        // Normalize the string: remove non-alphanumeric and convert to lowercase
-        String normalized = input.replaceAll("[^a-zA-Z0-9]", "").toLowerCase();
+    // Pop operation (Stack)
+    private char pop() {
+        return stack[top--];
+    }
 
-        boolean isPalindrome = true;
+    // Public method to check palindrome
+    public boolean checkPalindrome(String str) {
+        int n = str.length();
 
-        // Compare characters from both ends
-        for (int i = 0; i < normalized.length() / 2; i++) {
+        // Reset stack
+        top = -1;
 
-            if (normalized.charAt(i) != normalized.charAt(normalized.length() - 1 - i)) {
-                isPalindrome = false;
-                break;
+        // Push all characters into stack
+        for (int i = 0; i < n; i++) {
+            push(str.charAt(i));
+        }
+
+        // Compare with reversed (using stack pop)
+        for (int i = 0; i < n; i++) {
+            if (str.charAt(i) != pop()) {
+                return false;
             }
         }
 
-        // Display result
+        return true;
+    }
+}
+
+public class PalindromeCheckerApp {
+    public static void main(String[] args) {
+        String input = "racecar";
+
+        PalindromeChecker checker = new PalindromeChecker(input.length());
+
+        boolean result = checker.checkPalindrome(input);
+
+        // Required Output Format
         System.out.println("Input : " + input);
-        System.out.println("Is Palindrome? : " + isPalindrome);
+        System.out.println("Is Palindrome? : " + result);
     }
 }
